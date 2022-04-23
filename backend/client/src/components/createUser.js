@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import classes from './createUser.module.css'
+import { axiosInstance } from "../config";
 export default class UserCreate extends Component {
   constructor(props) {
     super(props);
@@ -28,8 +28,8 @@ export default class UserCreate extends Component {
 
     console.log(user);
 
-    axios
-      .post("http://localhost:5000/users/add", user)
+    axiosInstance
+      .post("/add", user)
       .then((res) => console.log(res.data));
     // to upload in database
     this.setState({ username: "" });

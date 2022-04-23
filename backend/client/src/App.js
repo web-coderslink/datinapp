@@ -1,4 +1,4 @@
-import { BrowserRouter,withRouter, Routes, Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar";
 import ExerciseCreate from "./components/createExercise";

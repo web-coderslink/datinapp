@@ -23,7 +23,10 @@ const usersRouter = require('./routes/users');
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
-
+app.use(express.static(path.join(__dirname,'./client/build','index.html')));
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,))
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

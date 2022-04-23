@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import DatePicker from "react-date-picker";
-import { createSearchParams, useParams } from "react-router-dom";
-import classes from './editcomponent.module.css'
+import { axiosInstance } from "../config";
+import classes from "./editcomponent.module.css";
 export default class ExerciseEdit extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +9,7 @@ export default class ExerciseEdit extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
-    this.cleardata=this.cleardata.bind(this);
+    this.cleardata = this.cleardata.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     console.log(this.props);
 
@@ -20,16 +19,15 @@ export default class ExerciseEdit extends Component {
       duration: 0,
       date: null,
       users: [],
-      refresh:0
-    
+      refresh: 0,
     };
   }
 
   componentDidMount() {
     const location = window.location.href.split("/");
 
-    axios
-      .get("http://localhost:5000/exercises/" + location[location.length - 1])
+    axiosInstance
+      .get("/exercises/" + location[location.length - 1])
       .then((res) => {
         this.setState({
           username: res.data.username,
@@ -42,7 +40,7 @@ export default class ExerciseEdit extends Component {
         console.log(err);
       });
 
-    axios.get("http://localhost:5000/users/").then((res) => {
+    axiosInstance.get("/users/").then((res) => {
       if (res.data.length > 0) {
         this.setState({
           users: res.data.map((user) => user.username),
@@ -62,13 +60,13 @@ export default class ExerciseEdit extends Component {
       description: e.target.value,
     });
   }
-  
-   cleardata(){
-     console.log("inside");
+
+  cleardata() {
+    console.log("inside");
     this.setState({
-      refresh:1
-    })
-   }
+      refresh: 1,
+    });
+  }
   onChangeDuration(e) {
     this.setState({
       duration: e.target.value,
@@ -93,11 +91,8 @@ export default class ExerciseEdit extends Component {
 
     console.log(exercise);
     const location = window.location.href.split("/");
-    axios
-      .post(
-        "http://localhost:5000/exercises/update/" + location[location.length -1],
-        exercise
-      )
+    axiosInstance
+      .post("/update/" + location[location.length - 1], exercise)
       .then((res) => console.log(res.data));
 
     window.location = "/";
@@ -107,67 +102,67 @@ export default class ExerciseEdit extends Component {
     return (
       <div className={classes.Card}>
         <div>
-        <h3>Edit Exercise Log</h3>
-        <form onSubmit={this.onSubmit}>
-          <div className={classes.form_group}>
-            <label>username</label>
-            <select
-              required
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-            >
-              {/* connectinf mongodb data */}
-              {this.state.users.map((user) => {
-                return (
-                  <option key={user} value={user}>
-                    {user}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <h3>Edit Exercise Log</h3>
+          <form onSubmit={this.onSubmit}>
+            <div className={classes.form_group}>
+              <label>username</label>
+              <select
+                required
+                value={this.state.username}
+                onChange={this.onChangeUsername}
+              >
+                {/* connectinf mongodb data */}
+                {this.state.users.map((user) => {
+                  return (
+                    <option key={user} value={user}>
+                      {user}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
 
-          <div className={classes.form_group}>
-            <label>Description: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-            />
-          </div>
-          <div className={classes.form_group}>
-            <label>Duration (in minutes): </label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
-            />
-          </div>
-
-          <div className={classes.form_group}>
-            <label>Date: </label>
-            <div style={{background:'white',WebkitAppearance:'none'}} >
-              <DatePicker clearIcon='refresh' calendarIcon={null}
-                 
-                value={this.state.refresh === 0 ? this.state.date : null}
-                onChange={this.onChangeDate}
+            <div className={classes.form_group}>
+              <label>Description: </label>
+              <input
+                type="text"
+                required
+                className="form-control"
+                value={this.state.description}
+                onChange={this.onChangeDescription}
               />
             </div>
-          </div>
+            <div className={classes.form_group}>
+              <label>Duration (in minutes): </label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.duration}
+                onChange={this.onChangeDuration}
+              />
+            </div>
 
-          <div className={classes.form_group}>
-            <input
-              type="submit"
-              value="Edit Exercise Log"
-              className="btn btn-primary"
-            />
-          </div>
-        </form>
+            <div className={classes.form_group}>
+              <label>Date: </label>
+              <div style={{ background: "white", WebkitAppearance: "none" }}>
+                <DatePicker
+                  clearIcon="refresh"
+                  calendarIcon={null}
+                  value={this.state.refresh === 0 ? this.state.date : null}
+                  onChange={this.onChangeDate}
+                />
+              </div>
+            </div>
+
+            <div className={classes.form_group}>
+              <input
+                type="submit"
+                value="Edit Exercise Log"
+                className="btn btn-primary"
+              />
+            </div>
+          </form>
         </div>
-       
       </div>
     );
   }
