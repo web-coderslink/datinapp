@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path =require('path');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
@@ -23,9 +24,9 @@ const usersRouter = require('./routes/users');
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
-app.use(express.static(path.join(__dirname,'./client/build','index.html')));
+app.use(express.static(path.join(__dirname,'./client/build')));
 app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,))
+  res.sendFile(path.join(__dirname,'./client/build','index.html'))
 })
 
 app.listen(port, () => {
