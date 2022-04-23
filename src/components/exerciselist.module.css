@@ -1,0 +1,35 @@
+.card {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.card h2 {
+  justify-content: center;
+  display: flex;
+  color: rgb(2, 2, 91);
+  text-transform: uppercase;
+}
+
+.table {
+  background-color: midnightblue;
+  padding: 5%;
+  border-radius: 5px;
+  width: 100%;
+  block-size: 100%;
+}
+
+.table table thead tr th {
+  color: antiquewhite;
+  background-color: maroon;
+  padding-inline: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+.table table tbody tr td {
+  background-color: chartreuse;
+  text-align: center;
+  padding-inline: 10px;
+  padding-top: 15px;
+}

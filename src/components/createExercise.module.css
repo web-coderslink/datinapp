@@ -1,0 +1,53 @@
+.Card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.Card form {
+  background-color: midnightblue;
+  padding: 20px;
+  color: goldenrod;
+  border-radius: 3px;
+  width: 100%;
+  block-size: 100%;
+}
+
+.Card h3 {
+  background-color: maroon;
+  color: antiquewhite;
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.Card .form_group {
+  margin: 20px;
+  display: flex;
+}
+
+.Card .form_group select,
+input,
+label {
+  border: none;
+  width: 50%;
+  padding: 5px;
+  margin-inline: 5px;
+}
+
+.Card .form_group select,
+input {
+  border-radius: 3px;
+  background-color: rgb(146, 250, 41);
+}
+
+.Card .form_group input[type="submit"] {
+  background-color: maroon;
+  color: antiquewhite;
+  padding: 15px;
+  box-shadow: 2px 2px 2px black;
+}

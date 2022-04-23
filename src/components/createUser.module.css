@@ -1,0 +1,30 @@
+.Cards {
+  display: flex;
+  justify-content: center;
+}
+
+.Cards h3 {
+  background-color: maroon;
+  color: antiquewhite;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.Cards form {
+  background-color: midnightblue;
+  padding: 10px;
+  width: 100%;
+}
+.Cards .form_groups {
+  margin-bottom: 10px;
+  color: goldenrod;
+}
+
+.Cards .form_groups input {
+  background-color: chartreuse;
+  padding: 10px;
+}

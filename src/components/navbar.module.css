@@ -1,0 +1,37 @@
+.navbar {
+  background-color: DarkRed;
+  list-style: none;
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 45%;
+  padding-right: 5%;
+}
+
+.navbar_brand {
+  color: #ecffdc;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: larger;
+  top: 35%;
+  position: relative;
+ 
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-inline: 2px;
+  background-color: midnightblue;
+  padding: 7px;
+  border-radius: 4px;
+}
+
+.nav_link {
+  text-decoration: none;
+  color: #ffaa33;
+}
